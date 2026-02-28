@@ -40,8 +40,8 @@ class TestHtmlRenderer(TestRenderer):
         self._test_token('Strikethrough', '<del>inner</del>')
 
     def test_image(self):
-        expected = '<img src="src" alt="" title="title" />'
-        self._test_token('Image', expected, src='src', title='title')
+        expected = '<img src="s&amp;r%3Ec" alt="" title="title" />'
+        self._test_token('Image', expected, src='s&r>c', title='title')
 
     def test_link(self):
         expected = '<a href="target" title="title">inner</a>'

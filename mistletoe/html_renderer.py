@@ -74,11 +74,12 @@ class HtmlRenderer(BaseRenderer):
 
     def render_image(self, token: span_token.Image) -> str:
         template = '<img src="{}" alt="{}"{} />'
+        src = self.escape_url(token.src)
         if token.title:
             title = ' title="{}"'.format(html.escape(token.title))
         else:
             title = ''
-        return template.format(token.src, self.render_to_plain(token), title)
+        return template.format(src, self.render_to_plain(token), title)
 
     def render_link(self, token: span_token.Link) -> str:
         template = '<a href="{target}"{title}>{inner}</a>'
